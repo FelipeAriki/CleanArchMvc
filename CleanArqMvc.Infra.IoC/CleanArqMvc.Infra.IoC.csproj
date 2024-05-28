@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArqMvc.Application\CleanArqMvc.Application.csproj" />
+    <ProjectReference Include="..\CleanArqMvc.Domain\CleanArqMvc.Domain.csproj" />
+    <ProjectReference Include="..\CleanArqMvc.Infra.Data\CleanArqMvc.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
