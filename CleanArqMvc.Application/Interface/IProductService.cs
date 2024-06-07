@@ -11,10 +11,10 @@ namespace CleanArqMvc.Application.Interface
     public interface IProductService
     {
         Task<IEnumerable<ProductDTO>> GetAllAsync();
-        Task<ProductDTO> GetByIdAsync(int id);
-        Task<ProductDTO> GetProductCategoryAsync(int id);
+        Task<ProductDTO> GetByIdAsync(int? id);
+        //Task<ProductDTO> GetProductCategoryAsync(int id);
         Task CreateAsync(ProductDTO productDTO);
         Task UpdateAsync(ProductDTO productDTO);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(int? id);
     }
 }

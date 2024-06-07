@@ -28,5 +28,14 @@ namespace CleanArqMvc.Domain.Entities
             Stock = stock;
             Image = image;
         }
+
+        public Product(string name, string description, decimal price, int stock, string image)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+            Stock = stock;
+            Image = image;
+        }
     }
 }
