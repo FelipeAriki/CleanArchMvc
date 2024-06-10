@@ -20,6 +20,10 @@ namespace CleanArqMvc.WebUI.Controllers
         public async Task<IActionResult> GetCategories()
         {
             var categories = await _categoryService.GetAllAsync();
+            if(categories == null)
+            {
+                return NotFound("Category not found!");
+            }
             return Ok(categories);
         }
 
@@ -27,19 +31,29 @@ namespace CleanArqMvc.WebUI.Controllers
         public async Task<IActionResult> GetCategory(int id)
         {
             var category = await _categoryService.GetByIdAsync(id);
+            if(category == null)
+            {
+                return NotFound("Category not found!");
+            }
             return Ok(category);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CategoryDTO categoryDTO)
+        public async Task<IActionResult> CreateCategory([FromBody] CategoryDTO categoryDTO)
         {
+            if (categoryDTO == null)
+                return BadRequest("Invalid Data.");
+
             await _categoryService.CreateAsync(categoryDTO);
             return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCategory(CategoryDTO categoryDTO)
+        public async Task<IActionResult> UpdateCategory([FromBody] CategoryDTO categoryDTO)
         {
+            if (categoryDTO == null)
+                return BadRequest("Invalid Data.");
+
             await _categoryService.UpdateAsync(categoryDTO);
             return Ok();
         }

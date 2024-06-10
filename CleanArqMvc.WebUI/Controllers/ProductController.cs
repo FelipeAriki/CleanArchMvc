@@ -20,6 +20,9 @@ namespace CleanArqMvc.WebUI.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var products = await _productService.GetAllAsync();
+            if(products == null)
+                return NotFound("Product not found!");
+
             return Ok(products);
         }
 
@@ -27,25 +30,34 @@ namespace CleanArqMvc.WebUI.Controllers
         public async Task<IActionResult> GetProduct(int id)
         {
             var product = await _productService.GetByIdAsync(id);
+            if (product == null)
+                return NotFound("Product not found!");
+
             return Ok(product);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(ProductDTO productDTO)
+        public async Task<IActionResult> CreateProduct([FromBody] ProductDTO productDTO)
         {
+            if (productDTO == null)
+                return BadRequest("Invalid Data!");
+
             await _productService.CreateAsync(productDTO);
             return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCategory(ProductDTO productDTO)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductDTO productDTO)
         {
+            if (productDTO == null)
+                return BadRequest("Invalid Data!");
+
             await _productService.UpdateAsync(productDTO);
             return Ok();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             await _productService.DeleteAsync(id);
             return Ok();
