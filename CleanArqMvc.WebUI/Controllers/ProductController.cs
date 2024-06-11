@@ -26,7 +26,7 @@ namespace CleanArqMvc.WebUI.Controllers
             return Ok(products);
         }
 
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetProduct(int id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -56,7 +56,7 @@ namespace CleanArqMvc.WebUI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _productService.DeleteAsync(id);

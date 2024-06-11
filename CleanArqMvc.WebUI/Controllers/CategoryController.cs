@@ -27,7 +27,7 @@ namespace CleanArqMvc.WebUI.Controllers
             return Ok(categories);
         }
 
-        [HttpGet]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCategory(int id)
         {
             var category = await _categoryService.GetByIdAsync(id);
@@ -58,7 +58,7 @@ namespace CleanArqMvc.WebUI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             await _categoryService.DeleteAsync(id);
